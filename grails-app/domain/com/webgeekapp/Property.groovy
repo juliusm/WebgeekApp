@@ -23,4 +23,8 @@ class Property {
         title(blank: false)
         photo(maxSize: 100000)
     }
+
+    Date getNearestEndDate(){
+        return tenants?.sort{it.nearestEndDate}?.get(0)?.nearestEndDate;
+    }
 }
