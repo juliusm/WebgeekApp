@@ -30,7 +30,8 @@
         </thead>
         <tbody>
         <g:each in="${propertyList.results}" status="i" var="propertyInstance">
-            <tr>
+            <tr id="clickable-row">
+                <g:hiddenField name="propertyId" value="${propertyInstance.id}"/>
                 <td>picture</td>
                 <td>
                     <table>
@@ -55,7 +56,9 @@
         </g:each>
         </tbody>
     </table>
-
+    <div class="pagination">
+        <g:paginate total="${propertyList}"  params="${params}"/>
+    </div>
 </div>
 </body>
 </html>

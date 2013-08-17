@@ -8,9 +8,11 @@ class AdvertisementController {
 
     def list() {
 
-        def properties = Property.search(params.q, sort: 'nearestEndDate', order: 'asc')
+        params.max = 5
+        def properties = params.q? Property.search(params.q, sort: 'nearestEndDate', order: 'asc'): [results: Property.list(params)]
+        def total = params.q? properties.total: Property.count
 
-        [propertyList: properties]
+        [propertyList: properties, total:total]
     }
 
     def show() {
