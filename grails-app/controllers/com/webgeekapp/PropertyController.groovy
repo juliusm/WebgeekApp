@@ -5,14 +5,16 @@ import org.springframework.dao.DataIntegrityViolationException
 class PropertyController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    def springSecurityService
 
     def index() {
         redirect(action: "list", params: params)
     }
 
     def list(Integer max) {
+        def currentUser = springSecurityService.getCurrentUser() as User
         params.max = Math.min(max ?: 10, 100)
-        [propertyInstanceList: Property.list(params), propertyInstanceTotal: Property.count()]
+        [propertyInstanceList: currentUser.propertyList, propertyInstanceTotal: Property.count()]
     }
 
     def create() {
@@ -20,7 +22,9 @@ class PropertyController {
     }
 
     def save() {
+        def currentUser = springSecurityService.getCurrentUser() as User
         def propertyInstance = new Property(params)
+        currentUser.addToPropertyList(propertyInstance)
         if (!propertyInstance.save(flush: true)) {
             render(view: "create", model: [propertyInstance: propertyInstance])
             return
@@ -98,5 +102,20 @@ class PropertyController {
             flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'property.label', default: 'Property'), id])
             redirect(action: "show", id: id)
         }
+    }
+
+    def viewMainPicture = {
+        def property = Property.get(params.id)
+        def avatarFile
+        def user = User.get(params.id)
+        def avatarContentType = 'image/jpeg'
+        if (!avatarFile || !params.temporary) {
+            avatarFile = property.photo
+        }
+
+        response.setHeader("Content-disposition", "attachment; filename=avatar.jpg")
+        response.contentType = avatarContentType ?:  'image/jpeg'
+        response.outputStream << avatarFile
+        response.outputStream.flush()
     }
 }

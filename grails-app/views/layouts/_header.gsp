@@ -12,8 +12,7 @@
             </g:link>
             <div class="nav-collapse collapse">
                 <ul class="nav nav-pills">
-                    <sec:ifAnyGranted roles="ROLE_USER,ROLE_ADMIN"><li <g:if test="${params.controller == 'user'}">class="active"</g:if>><g:link controller="user">Friends</g:link></li>      </sec:ifAnyGranted>
-                    <sec:ifAnyGranted roles="ROLE_ADMIN"><li><g:link controller="securityInfo" action="config"><i class="icon-wrench"></i> Administration</g:link></li></sec:ifAnyGranted>
+                    <sec:ifAnyGranted roles="ROLE_CARETAKER"><li><g:link controller="property" action="list"><i class="icon-wrench"></i> My Properties</g:link></li></sec:ifAnyGranted>
                 </ul>
                 <div class="pull-right" style="line-height: 38px;">
                     <sec:ifLoggedIn>

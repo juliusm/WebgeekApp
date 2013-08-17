@@ -25,20 +25,12 @@
 	<g:textField name="city" value="${propertyInstance?.city}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: propertyInstance, field: 'datePosted', 'error')} required">
-	<label for="datePosted">
-		<g:message code="property.datePosted.label" default="Date Posted" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="datePosted" precision="day"  value="${propertyInstance?.datePosted}"  />
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: propertyInstance, field: 'description', 'error')} ">
 	<label for="description">
 		<g:message code="property.description.label" default="Description" />
 		
 	</label>
-	<g:textField name="description" value="${propertyInstance?.description}"/>
+	<g:textArea name="description" value="${propertyInstance?.description}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: propertyInstance, field: 'maxTenants', 'error')} required">

@@ -50,12 +50,12 @@
 				</li>
 				</g:if>
 			
-				<g:if test="${userInstance?.advertisements}">
+				<g:if test="${userInstance?.propertyList}">
 				<li class="fieldcontain">
-					<span id="advertisements-label" class="property-label"><g:message code="user.advertisements.label" default="Advertisements" /></span>
+					<span id="propertyList-label" class="property-label"><g:message code="user.propertyList.label" default="Advertisements" /></span>
 					
-						<g:each in="${userInstance.advertisements}" var="a">
-						<span class="property-value" aria-labelledby="advertisements-label"><g:link controller="property" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></span>
+						<g:each in="${userInstance.propertyList}" var="a">
+						<span class="property-value" aria-labelledby="propertyList-label"><g:link controller="property" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></span>
 						</g:each>
 					
 				</li>

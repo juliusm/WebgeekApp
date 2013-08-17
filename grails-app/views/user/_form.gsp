@@ -34,12 +34,12 @@
 	<g:textField name="contactNumber" value="${userInstance?.contactNumber}"/>
 </div>
 
-<!-- <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'advertisements', 'error')} ">
-	<label for="advertisements">
-		<g:message code="user.advertisements.label" default="Advertisements" />
+<!-- <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'propertyList', 'error')} ">
+	<label for="propertyList">
+		<g:message code="user.propertyList.label" default="Properties" />
 		
 	</label>
-	<g:select name="advertisements" from="${com.webgeekapp.Property.list()}" multiple="multiple" optionKey="id" size="5" value="${userInstance?.advertisements*.id}" class="many-to-many"/>
+	<g:select name="propertyList" from="${com.webgeekapp.Property.list()}" multiple="multiple" optionKey="id" size="5" value="${userInstance?.propertyList*.id}" class="many-to-many"/>
 </div> -->
 
 <div class="fieldcontain ${hasErrors(bean: userInstance, field: 'accountExpired', 'error')} ">

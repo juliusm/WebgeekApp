@@ -15,13 +15,13 @@ class User {
     boolean accountLocked
     boolean passwordExpired
 
-    static hasMany = [advertisements : Property]
+    static hasMany = [propertyList : Property]
 
     static constraints = {
         username blank: false, unique: true
         password blank: false
         email email: true
-        advertisements nullable: true
+        properties nullable: true
     }
 
     static mapping = {

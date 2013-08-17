@@ -19,5 +19,6 @@ class Property {
     static constraints = {
         tenants(nullable: true)
         title(blank: false)
+        photo(maxSize: 100000)
     }
 }
