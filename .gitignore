@@ -8,8 +8,7 @@ bin/*
 web-app/WEB-INF/classes/
 cobertura.ser
 logs/**
-DataSource.groovy
-BootStrap.groovy
+grails
 .svn
 *.svn
 .svn/**
