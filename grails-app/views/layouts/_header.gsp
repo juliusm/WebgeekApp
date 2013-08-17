@@ -25,7 +25,7 @@
                     </sec:ifLoggedIn>
                     <sec:ifNotLoggedIn>
                         <i class='icon-user'></i> <g:link controller="login">Log in</g:link>&nbsp;&nbsp;&nbsp;
-                        <i class='icon-plus'></i> <g:link controller="register">Register</g:link>
+                        <i class='icon-plus'></i> <g:link controller="user" action="create">Register</g:link>
                     </sec:ifNotLoggedIn>
                 </div>
             </div>
