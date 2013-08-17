@@ -11,7 +11,7 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<div id="show-property" class="content scaffold-show" role="main">
+		<div id="show-property" class="row welld" role="main">
 			<h1>${propertyInstance.title}</h1>
 
 			<g:if test="${flash.message}">

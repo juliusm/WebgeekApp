@@ -10,13 +10,13 @@
 		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<div class="row well" role="main">
+		<div class="row span8 spaceTop1" role="main">
 			<g:if test="${propertyInstanceList}">
-                <h1>My Properties</h1>
+                <h4>My Properties</h4>
                 <g:if test="${flash.message}">
                     <div class="message" role="status">${flash.message}</div>
                 </g:if>
-                <table class="span12">
+                <table id="propertyTable" class="span8">
                     <thead>
                     <tr>
                         %{--<g:sortableColumn property="title" title="Photo" />--}%
@@ -48,6 +48,16 @@
 			<div class="pagination">
 				<g:paginate total="${propertyInstanceTotal}" />
 			</div>
+            <g:form>
+                <fieldset class="buttons pull-right">
+                    <g:actionSubmit class="add" action="create" value="Add new property" />
+                </fieldset>
+            </g:form>
 		</div>
+        <div id="side" class="span3 pull-right spaceTop1">
+            <h4>Sidebar</h4>
+
+        </div>
+
 	</body>
 </html>

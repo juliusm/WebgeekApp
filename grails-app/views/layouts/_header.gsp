@@ -8,9 +8,10 @@
             </a>
 
             <g:link uri="/" class="brand">
-                Web Geeks
+                Instalodge
             </g:link>
-            <div class="nav-collapse collapse">
+
+            <div class="nav-collapse">
                 <ul class="nav nav-pills">
                     <sec:ifAnyGranted roles="ROLE_CARETAKER"><li><g:link controller="property" action="list"><i class="icon-wrench"></i> My Properties</g:link></li></sec:ifAnyGranted>
                 </ul>
