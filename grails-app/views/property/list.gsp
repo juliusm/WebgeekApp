@@ -33,17 +33,18 @@
                                     <img class="smallAvatar" src="${g.createLink(controller: 'property', action:'viewMainPicture', params: [id: propertyInstance.id])}" />
                                 </div>
                             </td>
-                            <td><g:link action="show" id="${propertyInstance.id}">${fieldValue(bean: propertyInstance, field: "title")}</g:link></td>
+                            <td><g:link action="show" id="${propertyInstance.id}">${fieldValue(bean: propertyInstance, field: "title")}</g:link>
+                            <p class="money">P${propertyInstance.rentalFee} / Month</p></td>
                             <td>${propertyInstance.tenants.size()}/${propertyInstance.maxTenants} Tenants</td>
-                            <td><prettytime:display date="${propertyInstance.datePosted}"/></td>
+                            <td>Posted <prettytime:display date="${propertyInstance.datePosted}"/></td>
                         </tr>
                     </g:each>
                     </tbody>
                 </table>
                 <g:form>
-                    <fieldset class="buttons pull-right">
+                    <div class="buttons pull-right spaceTop1">
                         <g:actionSubmit class="add btn btn-primary" action="create" value="Add new bedspace" />
-                    </fieldset>
+                    </div>
                 </g:form>
 			</g:if>
             <g:else>
@@ -80,6 +81,5 @@
                  </g:each>
             </g:each>
         </div>
-
 	</body>
 </html>

@@ -2,12 +2,12 @@
     <div class="navbar-inner">
         <div class="container">
             <g:link uri="/" class="brand">
-                bedspacer.ph
+                <p>bedspacer.ph</p>
             </g:link>
 
             <div class="nav-collapse">
                 <ul class="nav nav-pills">
-                    <sec:ifAnyGranted roles="ROLE_CARETAKER"><li><g:link controller="property" action="list"><i class="icon-wrench"></i> My Bedspaces</g:link></li></sec:ifAnyGranted>
+                    <sec:ifAnyGranted roles="ROLE_CARETAKER"><li><g:link controller="property" action="list"><i class="icon-wrench"></i> Dashboard</g:link></li></sec:ifAnyGranted>
                 </ul>
                 <div class="pull-right" style="line-height: 38px;">
                     <sec:ifLoggedIn>

@@ -13,6 +13,7 @@ body {
     top: 0;
     width: 100%;
     z-index: 100;
+
 }
 
 .bgbackground {
@@ -28,6 +29,10 @@ table {
     text-align:center;
     vertical-align:middle;
     width: 400px;
+}
+
+#propertyTable {
+    border: 1px solid #dedede;
 }
 
 .bedSpaceDetails {
@@ -48,6 +53,11 @@ table {
 
 .tValue {
 
+}
+
+.money {
+    font-size: 15px;
+    color: #df0000;
 }
 
 #propertyTable td {
