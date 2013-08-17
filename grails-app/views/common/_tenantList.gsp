@@ -1,7 +1,7 @@
 <g:each in="${propertyInstance?.tenants}" var="tenantInstance">
     <table>
             <thead>
-            <tr>
+            <tr class="tKey">
                 <td>Name</td>
                 <td>Duration</td>
             </tr>
@@ -12,7 +12,7 @@
                 ${tenantInstance.firstName} ${tenantInstance.lastName}
               </td>
               <td>
-                  <g:formatDate format="MM-dd-yyyy" date="${tenantInstance.startDate}"/> to <g:formatDate format="MM-dd-yyyy" date="${tenantInstance.endDate}"/>
+                  <g:formatDate format="MMM dd, yyyy" date="${tenantInstance.startDate}"/> to <g:formatDate format="MMM dd, yyyy" date="${tenantInstance.endDate}"/>
               </td>
           </tr>
     </table>

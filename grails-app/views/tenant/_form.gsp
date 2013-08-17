@@ -70,7 +70,7 @@
         <g:message code="contract.endDate.label" default="End Date" />
         <span class="required-indicator">*</span>
     </label>
-    <g:datePicker name="endDate" precision="day"  value="${contractInstance?.endDate}"  />
+    <g:datePicker name="endDate" precision="day"  value="${contractInstance?.endDate}" years="${2013..2053}" />
 </div>
 
 

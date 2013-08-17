@@ -12,7 +12,7 @@
 	<body>
 		<div class="row span8 spaceTop1" role="main">
 			<g:if test="${propertyInstanceList}">
-                <h4>My Properties</h4>
+                <h4>My Bedspaces</h4>
                 <g:if test="${flash.message}">
                     <div class="message" role="status">${flash.message}</div>
                 </g:if>
@@ -42,7 +42,7 @@
                 </table>
                 <g:form>
                     <fieldset class="buttons pull-right">
-                        <g:actionSubmit class="add btn btn-primary" action="create" value="Add new property" />
+                        <g:actionSubmit class="add btn btn-primary" action="create" value="Add new bedspace" />
                     </fieldset>
                 </g:form>
 			</g:if>
@@ -57,8 +57,28 @@
 
 		</div>
         <div id="side" class="span3 pull-right spaceTop1">
-            <h4>Sidebar</h4>
+            <h4>My Tenants</h4>
+            <g:each in="${propertyInstanceList}" var="propertyInstance">
+                <g:each in="${propertyInstance?.tenants}" var="tenantInstance">
+                <table>
+                    <thead>
+                    <tr class="tKey">
+                        <td>Name</td>
+                        <td>Bedspace Rented</td>
+                    </tr>
 
+                    </thead>
+                    <tr>
+                        <td>
+                            ${tenantInstance.firstName} ${tenantInstance.lastName}
+                        </td>
+                        <td>
+                            <g:link action="show" id="${propertyInstance.id}">${fieldValue(bean: propertyInstance, field: "title")}</g:link>
+                        </td>
+                    </tr>
+                </table>
+                 </g:each>
+            </g:each>
         </div>
 
 	</body>

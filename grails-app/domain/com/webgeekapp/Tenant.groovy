@@ -23,7 +23,9 @@ class Tenant {
         contactPerson(nullable: true)
         contactPersonNumber(nullable: true)
         startDate(nullable: false)
-        endDate(nullable: false)
+        endDate(nullable: false, validator: { val, obj ->
+            val > new Date()
+        })
     }
 
 }
