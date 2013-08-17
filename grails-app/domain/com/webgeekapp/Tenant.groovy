@@ -11,20 +11,19 @@ class Tenant {
     String homeAddress
     String contactPerson
     String contactPersonNumber
-    Date nearestEndDate
 
-    static transients = ['nearestEndDate']
-    static hasMany = [contracts : Contract]
+    Date startDate
+    Date endDate
+    boolean isActive
+
     static belongsTo = [Property]
 
     static constraints = {
-        contracts(nullable: false)
         validId(nullable: true)
         contactPerson(nullable: true)
         contactPersonNumber(nullable: true)
+        startDate(nullable: false)
+        endDate(nullable: false)
     }
 
-    Date getNearestEndDate(){
-        return contracts?.sort{it.endDate}?.get(0)?.endDate
-    }
 }

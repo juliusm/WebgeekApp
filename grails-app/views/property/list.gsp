@@ -34,6 +34,7 @@
                                 </div>
                             </td>
                             <td><g:link action="show" id="${propertyInstance.id}">${fieldValue(bean: propertyInstance, field: "title")}</g:link></td>
+                            <td>${propertyInstance.tenants.size()}/${propertyInstance.maxTenants} Tenants</td>
                             <td><prettytime:display date="${propertyInstance.datePosted}"/></td>
                         </tr>
                     </g:each>
@@ -41,13 +42,13 @@
                 </table>
                 <g:form>
                     <fieldset class="buttons pull-right">
-                        <g:actionSubmit class="add" action="create" value="Add new property" />
+                        <g:actionSubmit class="add btn btn-primary" action="create" value="Add new property" />
                     </fieldset>
                 </g:form>
 			</g:if>
             <g:else>
                 <g:form class="well span5 pull-left" action="save" controller="post" style="margin-left:100px">
-                    <h4>You don't have any properties yet. Click <g:link controller="property" action="create">here </g:link>to add a property you own</h4>
+                    <h4>You don't have any bedspaces yet. Click <g:link controller="property" action="create">here </g:link>to add one.</h4>
                 </g:form>
             </g:else>
 			<div class="pagination">

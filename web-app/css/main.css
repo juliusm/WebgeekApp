@@ -23,10 +23,31 @@ body {
     height: 500px;
 }
 
-
+/* TABLE */
 table {
     text-align:center;
     vertical-align:middle;
+    width: 400px;
+}
+
+.bedSpaceDetails {
+     border: 1px solid #333333;
+}
+
+.bedSpaceDetails tr {
+      border-bottom: 1px solid #888888;
+ }
+
+.bedSpaceDetails tr {
+    border-bottom: 1px solid #888888;
+}
+
+.tKey {
+    font-weight: bold;
+}
+
+.tValue {
+
 }
 
 #propertyTable td {
@@ -105,6 +126,17 @@ img.avatar {
 img.smallAvatar {
     max-width: 160px;
     max-height: 160px;
+    padding:1px;
+    border:1px solid #021a40;
+    background-color: #000;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+
+img.bigAvatar {
+    max-width: 460px;
+    max-height: 460px;
     padding:1px;
     border:1px solid #021a40;
     background-color: #000;
@@ -213,4 +245,10 @@ h1,h2,h3,h4,h5 {text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);}
     right: 0;
     top: 0;
     text-indent: -9999px;
+}
+
+/*Predefined height LOL*/
+
+.spanheight1 {
+    height: 400px;
 }

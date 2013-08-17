@@ -23,10 +23,14 @@ class Property {
         address(nullable: false)
         city(nullable: false)
         title(blank: false)
-        photo(maxSize: 100000)
+        photo(maxSize: 9000000)
     }
 
-    Date getNearestEndDate(){
-        return tenants?.sort{it.nearestEndDate}?.get(0)?.nearestEndDate;
+//    Date getNearestEndDate(){
+//        return tenants?.sort{it.nearestEndDate}?.get(0)?.nearestEndDate;
+//    }
+
+    def isTenantsFull() {
+        this.tenants.size() == maxTenants
     }
 }
