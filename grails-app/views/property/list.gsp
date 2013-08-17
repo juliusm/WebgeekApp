@@ -39,6 +39,11 @@
                     </g:each>
                     </tbody>
                 </table>
+                <g:form>
+                    <fieldset class="buttons pull-right">
+                        <g:actionSubmit class="add" action="create" value="Add new property" />
+                    </fieldset>
+                </g:form>
 			</g:if>
             <g:else>
                 <g:form class="well span5 pull-left" action="save" controller="post" style="margin-left:100px">
@@ -48,11 +53,7 @@
 			<div class="pagination">
 				<g:paginate total="${propertyInstanceTotal}" />
 			</div>
-            <g:form>
-                <fieldset class="buttons pull-right">
-                    <g:actionSubmit class="add" action="create" value="Add new property" />
-                </fieldset>
-            </g:form>
+
 		</div>
         <div id="side" class="span3 pull-right spaceTop1">
             <h4>Sidebar</h4>

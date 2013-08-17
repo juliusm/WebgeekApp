@@ -20,6 +20,8 @@ class Property {
 
     static constraints = {
         tenants(nullable: true)
+        address(nullable: false)
+        city(nullable: false)
         title(blank: false)
         photo(maxSize: 100000)
     }
