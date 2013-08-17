@@ -18,11 +18,20 @@
 		<r:layoutResources />
 	</head>
 	<body>
-		<div id="grailsLogo" role="banner" style="font-size: 72px">WebGeek Dev Cup 2013</div>
-		<g:layoutBody/>
-		<div class="footer" role="contentinfo"></div>
-		<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>
-		<g:javascript library="application"/>
-		<r:layoutResources />
+		%{--<div id="grailsLogo" role="banner" style="font-size: 72px">WebGeek Dev Cup 2013</div>--}%
+		%{--<g:layoutBody/>--}%
+		%{--<div class="footer" role="contentinfo"></div>--}%
+		%{--<div id="spinner" class="spinner" style="display:none;"><g:message code="spinner.alt" default="Loading&hellip;"/></div>--}%
+		%{--<g:javascript library="application"/>--}%
+        <g:render template="/layouts/header"/>
+        <div class="main">
+            <div class="container">
+                <g:layoutBody/>
+
+            </div>
+
+        </div>
+
+    <r:layoutResources />
 	</body>
 </html>
