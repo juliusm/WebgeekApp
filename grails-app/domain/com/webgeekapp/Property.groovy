@@ -11,11 +11,13 @@ class Property {
     String address
     String city
     byte[] photo
+    Date nearestEndDate
 
     int maxTenants
 
     Date datePosted = new Date()
     static hasMany = [reviews: Review, tenants: Tenant]
+    static transients = ['nearestEndDate']
 
 
     static constraints = {
@@ -26,9 +28,9 @@ class Property {
         photo(maxSize: 9000000)
     }
 
-//    Date getNearestEndDate(){
-//        return tenants?.sort{it.nearestEndDate}?.get(0)?.nearestEndDate;
-//    }
+    Date getNearestEndDate(){
+        return tenants?.sort{it?.endDate}?.get(0)?.endDate;
+    }
 
     def isTenantsFull() {
         this.tenants.size() == maxTenants

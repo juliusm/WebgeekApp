@@ -8,12 +8,7 @@ class AdvertisementController {
 
     def list() {
 
-        StringBuilder sb = new StringBuilder()
-        sb.append("title: ").append(params.title).append(" OR ")
-        sb.append("startDate: ").append(params.startDate).append(" OR ")
-        sb.append("city: ").append(params.city)
-
-        def properties = Property.search(sb.toString())
+        def properties = Property.search(params.q, sort: 'nearestEndDate', order: 'asc')
 
         [propertyList: properties]
     }
