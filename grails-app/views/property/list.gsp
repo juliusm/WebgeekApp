@@ -80,6 +80,5 @@
                  </g:each>
             </g:each>
         </div>
-
 	</body>
 </html>
