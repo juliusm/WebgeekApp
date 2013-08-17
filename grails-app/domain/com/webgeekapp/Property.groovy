@@ -3,6 +3,8 @@ package com.webgeekapp
 class Property {
     //Bed Space
 
+    static searchable = true
+
     String title
     String description
     BigDecimal rentalFee

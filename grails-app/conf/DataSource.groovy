@@ -12,19 +12,19 @@ hibernate {
 // environment specific settings
 environments {
     development {
-//        dataSource {
-//            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-//            url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
-//        }
-
         dataSource {
-            pooled = true
-            dbCreate = "create-drop" // one of 'create', 'create-drop','update'
-            url = "jdbc:mysql://localhost/webgeekapp"
-            driverClassName = "com.mysql.jdbc.Driver"
-            username = "root"
-            password = ""
+            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
+            url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
         }
+
+//        dataSource {
+//            pooled = true
+//            dbCreate = "create-drop" // one of 'create', 'create-drop','update'
+//            url = "jdbc:mysql://localhost/webgeekapp"
+//            driverClassName = "com.mysql.jdbc.Driver"
+//            username = "root"
+//            password = ""
+//        }
     }
     test {
         dataSource {
