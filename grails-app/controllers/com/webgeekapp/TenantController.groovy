@@ -22,34 +22,30 @@ class TenantController {
     def save() {
         def propertyInstance = Property.get(params.propertyId)
         def tenantInstance = new Tenant(params)
-        def contractInstance = new Contract(params)
-        Tenant.withTransaction { status ->
-            if (!contractInstance.save(flush: true)) {
-                status.setRollbackOnly()
-                render(view: "create", model: [tenantInstance: tenantInstance, contractInstance:contractInstance])
-                return
+        if(tenantInstance.validate()) {
+            Tenant.withTransaction { status ->
+
+                if (!tenantInstance.save(flush: true)) {
+                    status.setRollbackOnly()
+                    render(view: "create", model: [tenantInstance: tenantInstance])
+                    return
+                }
+
+                propertyInstance.addToTenants(tenantInstance)
+                if (!propertyInstance.save(flush: true)) {
+                    status.setRollbackOnly()
+                    render(view: "create", model: [tenantInstance: tenantInstance])
+                    return
+                }
             }
 
-            tenantInstance.addToContracts(contractInstance)
-
-            if (!tenantInstance.save(flush: true)) {
-                status.setRollbackOnly()
-                render(view: "create", model: [tenantInstance: tenantInstance, contractInstance:contractInstance])
-                return
-            }
-
-            propertyInstance.addToTenants(tenantInstance)
-            if (!propertyInstance.save(flush: true)) {
-                status.setRollbackOnly()
-                render(view: "create", model: [tenantInstance: tenantInstance, contractInstance:contractInstance])
-                return
-            }
+            flash.message = message(code: 'default.created.message', args: [message(code: 'tenant.label', default: 'Tenant'), tenantInstance.id])
+            redirect(controller: "property" ,action: "show", id: propertyInstance.id)
+        } else {
+            render(view: "create", model: [tenantInstance: tenantInstance])
+            return
         }
 
-
-
-        flash.message = message(code: 'default.created.message', args: [message(code: 'tenant.label', default: 'Tenant'), tenantInstance.id])
-        redirect(action: "show", id: tenantInstance.id)
     }
 
     def show(Long id) {

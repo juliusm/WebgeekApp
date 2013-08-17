@@ -13,7 +13,7 @@ class AdvertisementController {
         sb.append("startDate: ").append(params.startDate).append(" OR ")
         sb.append("city: ").append(params.city)
 
-        def properties = Property.search(sb.toString(), sort: 'nearestEndDate', order: 'desc')
+        def properties = Property.search(sb.toString())
 
         [propertyList: properties]
     }

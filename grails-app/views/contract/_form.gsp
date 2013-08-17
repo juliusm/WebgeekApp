@@ -10,6 +10,14 @@
 	<g:textField name="description" value="${contractInstance?.description}"/>
 </div>
 
+<div class="fieldcontain ${hasErrors(bean: contractInstance, field: 'startDate', 'error')} required">
+    <label for="startDate">
+        <g:message code="contract.startDate.label" default="Start Date" />
+        <span class="required-indicator">*</span>
+    </label>
+    <g:datePicker name="startDate" precision="day"  value="${contractInstance?.startDate}"  />
+</div>
+
 <div class="fieldcontain ${hasErrors(bean: contractInstance, field: 'endDate', 'error')} required">
 	<label for="endDate">
 		<g:message code="contract.endDate.label" default="End Date" />
@@ -26,11 +34,4 @@
 	<g:field name="rentalFee" value="${fieldValue(bean: contractInstance, field: 'rentalFee')}" required=""/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: contractInstance, field: 'startDate', 'error')} required">
-	<label for="startDate">
-		<g:message code="contract.startDate.label" default="Start Date" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:datePicker name="startDate" precision="day"  value="${contractInstance?.startDate}"  />
-</div>
 

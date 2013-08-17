@@ -3,21 +3,17 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
+        <r:require modules="application"/>
+        <r:require modules="bootstrap"/>
+        <r:require modules="bootstrap-responsive-css"/>
 		<g:set var="entityName" value="${message(code: 'tenant.label', default: 'Tenant')}" />
 		<title><g:message code="default.create.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#create-tenant" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="create-tenant" class="content scaffold-create" role="main">
-			<h1><g:message code="default.create.label" args="[entityName]" /></h1>
+		<div id="create-tenant" class="row well" role="main">
+			<h2>Tenant</h2>
 			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
+			    <div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<g:hasErrors bean="${tenantInstance}">
 			<ul class="errors" role="alert">
@@ -29,6 +25,7 @@
 			<g:form action="save" >
 				<fieldset class="form">
 					<g:render template="form"/>
+                    %{--<g:render template="/contract/form"/>--}%
 				</fieldset>
 				<fieldset class="buttons">
 					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />

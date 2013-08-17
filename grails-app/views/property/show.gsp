@@ -11,31 +11,46 @@
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<div id="show-property" class="content scaffold-show" role="main">
-			<h1>${propertyInstance.title}</h1>
+		<div class="row well" role="main">
+			<h2>${propertyInstance.title}</h2>
 
-			<g:if test="${flash.message}">
-			    <div class="message" role="status">${flash.message}</div>
-			</g:if>
-
-			<ol class="property-list property">
+			%{--<g:if test="${flash.message}">--}%
+			    %{--<div class="message" role="status">${flash.message}</div>--}%
+			%{--</g:if>--}%
 
 
+            <div class="row">
                 <g:render template="/common/propertyList" model="[propertyInstance:propertyInstance]"/>
+            </div>
 
-                <g:render template="/common/tenantList" model="[propertyInstance:propertyInstance]"/>
+            <div class="span5">
+                <h3>Tenants(${propertyInstance.tenants.size()}/${propertyInstance.maxTenants})</h3>
+                <g:if test="${propertyInstance.tenants}">
+                    <g:render template="/common/tenantList" model="[propertyInstance:propertyInstance]"/>
+                    <span class="pull-right">
+                        <g:if test="${!propertyInstance.isTenantsFull()}">
+                            <g:link class="add btn btn-primary" controller="tenant" action="create" id="${propertyInstance?.id}">Add Tenant</g:link>
+                        </g:if>
+                    </span>
+                </g:if>
+                <g:else>
 
-			</ol>
+                    <g:form class="well span5 pull-left" action="save" controller="post" style="margin-left:100px">
+                        <g:hiddenField name="id" value="${propertyInstance?.id}" />
+                        <h4>You don't have any tenants yet. Click <g:link class="add" controller="tenant" action="create" id="${propertyInstance?.id}">here </g:link>to add one</h4>
+                    </g:form>
+                </g:else>
+            </div>
 
+        <g:form>
+            <fieldset class="buttons">
+                %{--<g:hiddenField name="id" value="${propertyInstance?.id}" />--}%
+                %{--<g:link class="edit" action="edit" id="${propertyInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>--}%
+                %{--<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />--}%
 
-			<g:form>
-				<fieldset class="buttons">
-					<g:hiddenField name="id" value="${propertyInstance?.id}" />
-					<g:link class="edit" action="edit" id="${propertyInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-                    <g:link class="add" controller="tenant" action="create" id="${propertyInstance?.id}">Add Tenant</g:link>
-				</fieldset>
-			</g:form>
+            </fieldset>
+        </g:form>
 		</div>
+
 	</body>
 </html>

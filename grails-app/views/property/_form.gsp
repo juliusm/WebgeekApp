@@ -3,10 +3,18 @@
 
 <div class="fieldcontain ${hasErrors(bean: propertyInstance, field: 'title', 'error')} required">
 	<label for="title">
-		<g:message code="property.title.label" default="Title" />
+		Name
 		<span class="required-indicator">*</span>
 	</label>
 	<g:textField name="title" required="" value="${propertyInstance?.title}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: propertyInstance, field: 'description', 'error')} ">
+    <label for="description">
+        <g:message code="property.description.label" default="Description" />
+
+    </label>
+    <g:textArea name="description" value="${propertyInstance?.description}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: propertyInstance, field: 'address', 'error')} ">
@@ -25,20 +33,12 @@
 	<g:textField name="city" value="${propertyInstance?.city}"/>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: propertyInstance, field: 'description', 'error')} ">
-	<label for="description">
-		<g:message code="property.description.label" default="Description" />
-		
-	</label>
-	<g:textArea name="description" value="${propertyInstance?.description}"/>
-</div>
-
 <div class="fieldcontain ${hasErrors(bean: propertyInstance, field: 'maxTenants', 'error')} required">
 	<label for="maxTenants">
 		<g:message code="property.maxTenants.label" default="Max Tenants" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="maxTenants" type="number" value="${propertyInstance.maxTenants}" required=""/>
+	<g:field name="maxTenants" type="number" value="${propertyInstance.maxTenants?: 1}" required=""/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: propertyInstance, field: 'photo', 'error')} required">
@@ -51,7 +51,7 @@
 
 <div class="fieldcontain ${hasErrors(bean: propertyInstance, field: 'rentalFee', 'error')} required">
 	<label for="rentalFee">
-		<g:message code="property.rentalFee.label" default="Rental Fee" />
+		<g:message code="property.rentalFee.label" default="Rental Fee / Month" />
 		<span class="required-indicator">*</span>
 	</label>
 	<g:field name="rentalFee" value="${fieldValue(bean: propertyInstance, field: 'rentalFee')}" required=""/>

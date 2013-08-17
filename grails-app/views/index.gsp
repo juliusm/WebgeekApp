@@ -7,7 +7,7 @@
     <r:require modules="bootstrap-responsive-css"/>
 </head>
     <body>
-        <div class="row">
+        <div class="bgbackground">
             %{--<g:form class="well span5 pull-left" action="save" controller="post" style="margin-left:100px">--}%
             %{--</g:form>--}%
         </div>

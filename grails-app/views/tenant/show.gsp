@@ -4,35 +4,19 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
+        <r:require modules="application"/>
+        <r:require modules="bootstrap"/>
+        <r:require modules="bootstrap-responsive-css"/>
 		<g:set var="entityName" value="${message(code: 'tenant.label', default: 'Tenant')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<a href="#show-tenant" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
-		</div>
-		<div id="show-tenant" class="content scaffold-show" role="main">
+		<div id="show-tenant" class="row well" role="main">
 			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
 			<ol class="property-list tenant">
-			
-				<g:if test="${tenantInstance?.contracts}">
-				<li class="fieldcontain">
-					<span id="contracts-label" class="property-label"><g:message code="tenant.contracts.label" default="Contracts" /></span>
-					
-						<g:each in="${tenantInstance.contracts}" var="c">
-						<span class="property-value" aria-labelledby="contracts-label"><g:link controller="contract" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
 			
 				<g:if test="${tenantInstance?.validId}">
 				<li class="fieldcontain">
