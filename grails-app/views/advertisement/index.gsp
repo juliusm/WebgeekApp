@@ -20,71 +20,29 @@
     <div class="row span8 spaceTop1" role="main">
         <table id="propertyTable" class="span8">
             <tbody>
-            <g:each in="${propertyList?.results}" status="i" var="propertyInstance">
+            <g:each in="${propertyList.results}" status="i" var="propertyInstance">
                 <tr class="clickable-row">
                     <g:hiddenField name="propertyId" value="${propertyInstance.id}"/>
                     <td>
-                        <div class="span6">
-                            <img class="smallAvatar" src="${g.createLink(controller: 'property', action:'viewMainPicture', params: [id: propertyInstance.id])}" />
+                        <div class="span3">
+                            <div class="pull-left">
+                                <img class="smallAvatar" src="${g.createLink(controller: 'property', action:'viewMainPicture', params: [id: propertyInstance.id])}" />
+                            </div>
+                            <div class="pull-right">
+                                <h5>${propertyInstance.title}</h5>
+                                <p>by ${propertyInstance.caretaker.username}</p>
+                            </div>
                         </div>
                     </td>
                     <td>
-                        <table class="bedSpaceDetails">
-                            <tr>
-                                <td>
-                                    <span class="tKey">
-                                        Rental Fee
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="property-value tValue">${propertyInstance?.rentalFee}</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="tKey">
-                                        Address
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="property-value tValue" aria-labelledby="address-label">${propertyInstance?.address}</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="tKey">
-                                        City
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="property-value tValue" aria-labelledby="address-label">${propertyInstance?.city}</span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="tKey">
-                                        Available On
-                                    </span>
-                                </td>
-                                <td>
-                                    <span class="property-value tValue" aria-labelledby="address-label"><g:formatDate format="MMM dd, yyyy" date="${propertyInstance?.nearestEndDate}"/></span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <span class="tKey">
-                                        Description
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2">
-                                    <span class="tValue">
-                                        ${propertyInstance?.description}
-                                    </span>
-                                </td>
-                            </tr>
-                        </table>
+                        <div class="span4">
+                            <h5>P${propertyInstance.rentalFee} / Month</h5>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="span4">
+                            Posted <prettytime:display date="${propertyInstance.datePosted}"/>
+                        </div>
                     </td>
                 </tr>
             </g:each>
