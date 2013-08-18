@@ -3,26 +3,30 @@ package com.webgeekapp
 import org.springframework.dao.DataIntegrityViolationException
 import grails.plugins.springsecurity.Secured
 
-@Secured(['ROLE_CARETAKER'])
+
 class PropertyController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
     def springSecurityService
 
+    @Secured(['ROLE_CARETAKER'])
     def index() {
         redirect(action: "list", params: params)
     }
 
+    @Secured(['ROLE_CARETAKER'])
     def list(Integer max) {
         def currentUser = springSecurityService.getCurrentUser() as User
         params.max = Math.min(max ?: 10, 100)
         [propertyInstanceList: currentUser.propertyList, propertyInstanceTotal: Property.count()]
     }
 
+    @Secured(['ROLE_CARETAKER'])
     def create() {
         [propertyInstance: new Property(params)]
     }
 
+    @Secured(['ROLE_CARETAKER'])
     def save() {
         def currentUser = springSecurityService.getCurrentUser() as User
         def propertyInstance = new Property(params)
@@ -36,6 +40,7 @@ class PropertyController {
         redirect(action: "show", id: propertyInstance.id)
     }
 
+    @Secured(['ROLE_CARETAKER'])
     def show(Long id) {
         def propertyInstance = Property.get(id)
         if (!propertyInstance) {
@@ -47,6 +52,7 @@ class PropertyController {
         [propertyInstance: propertyInstance]
     }
 
+    @Secured(['ROLE_CARETAKER'])
     def edit(Long id) {
         def propertyInstance = Property.get(id)
         if (!propertyInstance) {
@@ -58,6 +64,7 @@ class PropertyController {
         [propertyInstance: propertyInstance]
     }
 
+    @Secured(['ROLE_CARETAKER'])
     def update(Long id, Long version) {
         def propertyInstance = Property.get(id)
         if (!propertyInstance) {
@@ -87,6 +94,7 @@ class PropertyController {
         redirect(action: "show", id: propertyInstance.id)
     }
 
+    @Secured(['ROLE_CARETAKER'])
     def delete(Long id) {
         def propertyInstance = Property.get(id)
         if (!propertyInstance) {
