@@ -45,16 +45,18 @@
                 <h3>Feedbacks (${userInstance?.reviews.size()})</h3>
                 <g:if test="${userInstance.reviews}">
                     <g:render template="/common/reviewList" model="[reviewsInstanceList:userInstance.reviews]"/>
-                    <span class="pull-right">
-                            <g:link class="add btn btn-primary" controller="review" action="create" params="[caretakerId:userInstance?.id]">Add Review</g:link>
-                    </span>
+
                 </g:if>
                 <g:else>
-
-                    <g:form class="well span5 pull-left" action="save" controller="post" style="margin-left:100px">
-                        <h4>This user doesn't have any feedbacks yet. Click <g:link class="add" controller="review" action="create" params="[caretakerId:userInstance?.id]">here </g:link>to add one</h4>
-                    </g:form>
+                        <g:form class="well span5 pull-left" action="save" controller="post" style="margin-left:100px">
+                            <h4>0 feedbacks.</h4>
+                        </g:form>
                 </g:else>
+                <sec:ifNotGranted roles="ROLE_CARETAKER">
+                    <span class="pull-right">
+                        <g:link class="add btn btn-primary" controller="review" action="create" params="[caretakerId:userInstance?.id]">Add Review</g:link>
+                    </span>
+                </sec:ifNotGranted>
             </div>
 		</div>
 
