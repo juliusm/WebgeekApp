@@ -3,7 +3,27 @@
 </div>
 
 <div>
-    <h3>${propertyInstance?.caretaker?.username}</h3>
+    <table class="bedSpaceDetails">
+    <tr>
+        <td>
+            <h3><g:link controller="user" action="show" params="[id:propertyInstance.caretakerId]" >${propertyInstance?.caretaker?.username}</g:link> </h3>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h4>Feedback:</h4>
+            <p>
+                <span class="positiveFeedback"><user:positiveFeedbacks userId="${propertyInstance.caretakerId}"/></span>
+                positive feedback/s / <span class="negativeFeedback"><user:negativeFeedbacks userId="${propertyInstance.caretakerId}" /> </span> negative feedback/s
+            </p>
+        </td>
+    </tr>
+
+
+    %{--<p>--}%
+
+     %{--</p>--}%
+    </table>
     <table class="bedSpaceDetails">
         <tr>
             <td>

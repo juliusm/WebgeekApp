@@ -15,7 +15,7 @@ class User {
     boolean accountLocked
     boolean passwordExpired
 
-    static hasMany = [propertyList : Property]
+    static hasMany = [reviews: Review , propertyList : Property]
 
     static constraints = {
         username blank: false, unique: true

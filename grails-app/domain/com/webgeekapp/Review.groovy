@@ -4,8 +4,11 @@ class Review {
 
     String title
     String description
-    Date dateCreated
+    Date dateCreated = new Date()
     User reviewer
+    boolean feedback
+
+    static mappedBy = [caretaker: User]
 
     static constraints = {
         title(blank: true)

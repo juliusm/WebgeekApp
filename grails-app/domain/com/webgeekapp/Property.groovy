@@ -16,7 +16,7 @@ class Property {
     int maxTenants
 
     Date datePosted = new Date()
-    static hasMany = [reviews: Review, tenants: Tenant]
+    static hasMany = [tenants: Tenant]
     static belongsTo = [caretaker: User]
     static transients = ['nearestEndDate']
 

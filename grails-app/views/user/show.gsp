@@ -4,116 +4,59 @@
 <html>
 	<head>
 		<meta name="layout" content="main">
+        <r:require modules="application"/>
+        <r:require modules="bootstrap"/>
+        <r:require modules="bootstrap-responsive-css"/>
 		<g:set var="entityName" value="${message(code: 'user.label', default: 'User')}" />
 		<title><g:message code="default.show.label" args="[entityName]" /></title>
 	</head>
 	<body>
 		<a href="#show-user" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div class="nav" role="navigation">
-			<ul>
-				<li><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></li>
-				<li><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></li>
-				<li><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></li>
-			</ul>
+		<div id="show-user" class="row well" role="main">
+			<h1>${userInstance?.username} </h1>
+                <g:if test="${flash.message}">
+                <div class="message" role="status">${flash.message}</div>
+                </g:if>
+                <table class="bedSpaceDetails">
+                    <tr>
+                        <td>
+                            <span class="tKey">
+                                Contact Number
+                            </span>
+                        </td>
+                        <td>
+                            <span class="property-value tValue">${userInstance?.contactNumber}</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="tKey">
+                                Email
+                            </span>
+                        </td>
+                        <td>
+                            <span class="property-value tValue" aria-labelledby="address-label">${userInstance?.email}</span>
+                        </td>
+                    </tr>
+
+                </table>
+
+            <div class="span5">
+                <h3>Feedbacks (${userInstance?.reviews.size()})</h3>
+                <g:if test="${userInstance.reviews}">
+                    <g:render template="/common/reviewList" model="[reviewsInstanceList:userInstance.reviews]"/>
+                    <span class="pull-right">
+                            <g:link class="add btn btn-primary" controller="review" action="create" params="[caretakerId:userInstance?.id]">Add Review</g:link>
+                    </span>
+                </g:if>
+                <g:else>
+
+                    <g:form class="well span5 pull-left" action="save" controller="post" style="margin-left:100px">
+                        <h4>This user doesn't have any feedbacks yet. Click <g:link class="add" controller="review" action="create" params="[caretakerId:userInstance?.id]">here </g:link>to add one</h4>
+                    </g:form>
+                </g:else>
+            </div>
 		</div>
-		<div id="show-user" class="content scaffold-show" role="main">
-			<h1><g:message code="default.show.label" args="[entityName]" /></h1>
-			<g:if test="${flash.message}">
-			<div class="message" role="status">${flash.message}</div>
-			</g:if>
-			<ol class="property-list user">
-			
-				<g:if test="${userInstance?.username}">
-				<li class="fieldcontain">
-					<span id="username-label" class="property-label"><g:message code="user.username.label" default="Username" /></span>
-					
-						<span class="property-value" aria-labelledby="username-label"><g:fieldValue bean="${userInstance}" field="username"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.password}">
-				<li class="fieldcontain">
-					<span id="password-label" class="property-label"><g:message code="user.password.label" default="Password" /></span>
-					
-						<span class="property-value" aria-labelledby="password-label"><g:fieldValue bean="${userInstance}" field="password"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.email}">
-				<li class="fieldcontain">
-					<span id="email-label" class="property-label"><g:message code="user.email.label" default="Email" /></span>
-					
-						<span class="property-value" aria-labelledby="email-label"><g:fieldValue bean="${userInstance}" field="email"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.propertyList}">
-				<li class="fieldcontain">
-					<span id="propertyList-label" class="property-label"><g:message code="user.propertyList.label" default="Advertisements" /></span>
-					
-						<g:each in="${userInstance.propertyList}" var="a">
-						<span class="property-value" aria-labelledby="propertyList-label"><g:link controller="property" action="show" id="${a.id}">${a?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.accountExpired}">
-				<li class="fieldcontain">
-					<span id="accountExpired-label" class="property-label"><g:message code="user.accountExpired.label" default="Account Expired" /></span>
-					
-						<span class="property-value" aria-labelledby="accountExpired-label"><g:formatBoolean boolean="${userInstance?.accountExpired}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.accountLocked}">
-				<li class="fieldcontain">
-					<span id="accountLocked-label" class="property-label"><g:message code="user.accountLocked.label" default="Account Locked" /></span>
-					
-						<span class="property-value" aria-labelledby="accountLocked-label"><g:formatBoolean boolean="${userInstance?.accountLocked}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.contactNumber}">
-				<li class="fieldcontain">
-					<span id="contactNumber-label" class="property-label"><g:message code="user.contactNumber.label" default="Contact Number" /></span>
-					
-						<span class="property-value" aria-labelledby="contactNumber-label"><g:fieldValue bean="${userInstance}" field="contactNumber"/></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.enabled}">
-				<li class="fieldcontain">
-					<span id="enabled-label" class="property-label"><g:message code="user.enabled.label" default="Enabled" /></span>
-					
-						<span class="property-value" aria-labelledby="enabled-label"><g:formatBoolean boolean="${userInstance?.enabled}" /></span>
-					
-				</li>
-				</g:if>
-			
-				<g:if test="${userInstance?.passwordExpired}">
-				<li class="fieldcontain">
-					<span id="passwordExpired-label" class="property-label"><g:message code="user.passwordExpired.label" default="Password Expired" /></span>
-					
-						<span class="property-value" aria-labelledby="passwordExpired-label"><g:formatBoolean boolean="${userInstance?.passwordExpired}" /></span>
-					
-				</li>
-				</g:if>
-			
-			</ol>
-			<g:form>
-				<fieldset class="buttons">
-					<g:hiddenField name="id" value="${userInstance?.id}" />
-					<g:link class="edit" action="edit" id="${userInstance?.id}"><g:message code="default.button.edit.label" default="Edit" /></g:link>
-					<g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" />
-				</fieldset>
-			</g:form>
-		</div>
+
 	</body>
 </html>
