@@ -16,6 +16,7 @@ class ReviewController {
         [reviewInstanceList: Review.list(params), reviewInstanceTotal: Review.count()]
     }
 
+    @Secured(['ROLE_USER'])
     def create() {
         [reviewInstance: new Review(params)]
     }
