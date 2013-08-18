@@ -17,6 +17,7 @@ class Property {
 
     Date datePosted = new Date()
     static hasMany = [reviews: Review, tenants: Tenant]
+    static belongsTo = [caretaker: User]
     static transients = ['nearestEndDate']
 
 
@@ -31,7 +32,7 @@ class Property {
     Date getNearestEndDate(){
         def tenants = tenants?.sort{it?.endDate}
 
-        return tenants && tenants.size()>0? tenants.get(0)?.endDate: null
+        return tenants && tenants.size()>0? tenants.get(0)?.endDate: new Date()
     }
 
     def isTenantsFull() {

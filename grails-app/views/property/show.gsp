@@ -14,11 +14,6 @@
 		<div class="row well" role="main">
 			<h2>${propertyInstance.title}</h2>
 
-			%{--<g:if test="${flash.message}">--}%
-			    %{--<div class="message" role="status">${flash.message}</div>--}%
-			%{--</g:if>--}%
-
-
             <div class="row">
                 <g:render template="/common/propertyList" model="[propertyInstance:propertyInstance]"/>
             </div>

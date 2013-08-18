@@ -3,7 +3,7 @@
 </div>
 
 <div>
-    <h3><user:currentUser/></h3>
+    <h3>${propertyInstance?.caretaker?.username}</h3>
     <table class="bedSpaceDetails">
         <tr>
             <td>
@@ -12,7 +12,7 @@
                 </span>
             </td>
             <td>
-                <span class="property-value tValue">${currentUser?.contactNumber}</span>
+                <span class="property-value tValue">${propertyInstance?.caretaker?.contactNumber}</span>
             </td>
         </tr>
         <tr>
@@ -22,7 +22,7 @@
                 </span>
             </td>
             <td>
-                <span class="property-value tValue" aria-labelledby="address-label">${currentUser?.email}</span>
+                <span class="property-value tValue" aria-labelledby="address-label">${propertyInstance?.caretaker?.email}</span>
             </td>
         </tr>
         %{--<tr>--}%
@@ -83,6 +83,16 @@
             </td>
             <td>
                 <span class="property-value tValue" aria-labelledby="address-label">${propertyInstance?.city}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span class="tKey">
+                    Available On:
+                </span>
+            </td>
+            <td>
+                <span class="property-value tValue" aria-labelledby="address-label"><g:formatDate format="MMM dd, yyyy" date="${propertyInstance?.nearestEndDate}"/></span>
             </td>
         </tr>
         <tr>
