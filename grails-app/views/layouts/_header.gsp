@@ -2,7 +2,7 @@
     <div class="navbar-inner">
         <div class="container">
             <g:link uri="/" class="brand">
-                <img src="images/logo.png" alt="bedspacer.ph"/>
+                <img src="${resource(dir: 'images', file: 'logo.png')}" alt="bedspacer.ph"/>
             </g:link>
 
             <div class="nav-collapse">

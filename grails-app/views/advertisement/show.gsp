@@ -19,7 +19,7 @@
     </div>
 
     <div class="pull-right">
-        <g:link class="edit btn btn-primary" action="list">Back</g:link>
+        <g:link class="edit btn btn-primary" action="index">Back</g:link>
     </div>
 </div>
 </body>

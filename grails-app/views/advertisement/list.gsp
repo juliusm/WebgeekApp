@@ -30,7 +30,7 @@
                 <g:hiddenField name="propertyId" value="${propertyInstance.id}"/>
                 <td>
                     <div class="span6">
-                        <img class="bigAvatar" src="${g.createLink(controller: 'property', action:'viewMainPicture', params: [id: propertyInstance.id])}" />
+                        <img class="smallerAvatar" src="${g.createLink(controller: 'property', action:'viewMainPicture', params: [id: propertyInstance.id])}" />
                     </div>
                 </td>
                 <td>
