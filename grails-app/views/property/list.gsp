@@ -59,16 +59,15 @@
 		</div>
         <div id="side" class="span3 pull-right spaceTop1">
             <h4>My Tenants</h4>
+            <table>
+                <thead>
+                <tr class="tKey">
+                    <td>Name</td>
+                    <td>Bedspace Rented</td>
+                </tr>
+            </thead>
             <g:each in="${propertyInstanceList}" var="propertyInstance">
                 <g:each in="${propertyInstance?.tenants}" var="tenantInstance">
-                <table>
-                    <thead>
-                    <tr class="tKey">
-                        <td>Name</td>
-                        <td>Bedspace Rented</td>
-                    </tr>
-
-                    </thead>
                     <tr>
                         <td>
                             ${tenantInstance.firstName} ${tenantInstance.lastName}
@@ -77,9 +76,9 @@
                             <g:link action="show" id="${propertyInstance.id}">${fieldValue(bean: propertyInstance, field: "title")}</g:link>
                         </td>
                     </tr>
-                </table>
                  </g:each>
             </g:each>
+            </table>
         </div>
 	</body>
 </html>
