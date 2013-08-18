@@ -40,30 +40,34 @@
                     </tr>
 
                 </table>
+           <g:if test="${sec.loggedInUserInfo(field: 'username') == userInstance.username}">
+           </g:if>
+           <g:else>
+               <div class="span5">
+                   <h3>Feedbacks (${userInstance?.reviews.size()})</h3>
+                   <g:if test="${userInstance.reviews}">
+                       <g:render template="/common/reviewList" model="[reviewsInstanceList:userInstance.reviews]"/>
 
-            <div class="span5">
-                <h3>Feedbacks (${userInstance?.reviews.size()})</h3>
-                <g:if test="${userInstance.reviews}">
-                    <g:render template="/common/reviewList" model="[reviewsInstanceList:userInstance.reviews]"/>
+                   </g:if>
+                   <g:else>
+                       <g:form class="well span5 pull-left" action="save" controller="post" style="margin-left:100px">
+                           <h4>0 feedbacks.</h4>
+                       </g:form>
+                   </g:else>
+                   <sec:ifAnyGranted roles="ROLE_USER,ROLE_CARETAKER">
+                       <span class="pull-right">
+                           <g:link class="add btn btn-primary" controller="review" action="create" params="[caretakerId:userInstance?.id]">Add Review</g:link>
+                       </span>
+                   </sec:ifAnyGranted>
+                   <sec:ifNotGranted roles="ROLE_USER,ROLE_CARETAKER">
+                       <g:form class="well span5 pull-left" action="save" controller="post" style="margin-left:100px">
+                           <g:hiddenField name="id" value="${userInstance?.id}" />
+                           <h4> You must log in to add a review. Click <g:link class="add" controller="review" action="create" id="${userInstance?.id}">here </g:link>to log in.</h4>
+                       </g:form>
+                   </sec:ifNotGranted>
+               </div>
+           </g:else>
 
-                </g:if>
-                <g:else>
-                        <g:form class="well span5 pull-left" action="save" controller="post" style="margin-left:100px">
-                            <h4>0 feedbacks.</h4>
-                        </g:form>
-                </g:else>
-                <sec:ifAnyGranted roles="ROLE_USER,ROLE_CARETAKER">
-                    <span class="pull-right">
-                        <g:link class="add btn btn-primary" controller="review" action="create" params="[caretakerId:userInstance?.id]">Add Review</g:link>
-                    </span>
-                </sec:ifAnyGranted>
-                <sec:ifNotGranted roles="ROLE_USER,ROLE_CARETAKER">
-                    <g:form class="well span5 pull-left" action="save" controller="post" style="margin-left:100px">
-                        <g:hiddenField name="id" value="${userInstance?.id}" />
-                        <h4> You must log in to add a review. Click <g:link class="add" controller="review" action="create" id="${userInstance?.id}">here </g:link>to log in.</h4>
-                    </g:form>
-                </sec:ifNotGranted>
-            </div>
 		</div>
 
 	</body>
