@@ -4,10 +4,10 @@ class Contract {
 
     static searchable = true
 
-    BigDecimal rentalFee
     String description
     Date startDate
     Date endDate
+    boolean isActive
 
     static constraints = {
     }

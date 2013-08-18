@@ -1,19 +1,13 @@
 <div class="navbar">
     <div class="navbar-inner">
         <div class="container">
-            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </a>
-
             <g:link uri="/" class="brand">
-                <h3><g:message code="webapp.label"/></h3>
+                <p><g:message code="webapp.label"/></p>
             </g:link>
 
             <div class="nav-collapse">
                 <ul class="nav nav-pills">
-                    <sec:ifAnyGranted roles="ROLE_CARETAKER"><li><g:link controller="property" action="list"><i class="icon-wrench"></i> My Properties</g:link></li></sec:ifAnyGranted>
+                    <sec:ifAnyGranted roles="ROLE_CARETAKER"><li><g:link controller="property" action="list"><i class="icon-wrench"></i> Dashboard</g:link></li></sec:ifAnyGranted>
                 </ul>
                 <div class="pull-right" style="line-height: 38px;">
                     <sec:ifLoggedIn>

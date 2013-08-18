@@ -18,17 +18,6 @@
 			</g:if>
 			<ol class="property-list tenant">
 			
-				<g:if test="${tenantInstance?.contracts}">
-				<li class="fieldcontain">
-					<span id="contracts-label" class="property-label"><g:message code="tenant.contracts.label" default="Contracts" /></span>
-					
-						<g:each in="${tenantInstance.contracts}" var="c">
-						<span class="property-value" aria-labelledby="contracts-label"><g:link controller="contract" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></span>
-						</g:each>
-					
-				</li>
-				</g:if>
-			
 				<g:if test="${tenantInstance?.validId}">
 				<li class="fieldcontain">
 					<span id="validId-label" class="property-label"><g:message code="tenant.validId.label" default="Valid Id" /></span>

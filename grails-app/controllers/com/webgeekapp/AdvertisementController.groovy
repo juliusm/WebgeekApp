@@ -11,18 +11,19 @@ class AdvertisementController {
 	}
 
     def list() {
+        params.max = 5
+        def properties = params.q? Property.search(params.q, sort: 'nearestEndDate', order: 'asc'): [results: Property.list(params)]
+        def total = params.q? properties.total: Property.count
 
-        StringBuilder sb = new StringBuilder()
-        sb.append("title: ").append(params.title).append(" OR ")
-        sb.append("startDate: ").append(params.startDate).append(" OR ")
-        sb.append("city: ").append(params.city)
-
-        def properties = Property.search(sb.toString(), sort: 'nearestEndDate', order: 'desc')
-
-        [propertyList: properties]
+        [propertyList: properties, total:total]
     }
 
-    def show() {
+    def show(Long id) {
 
+        def propertyInstance = Property.get(id)
+        println("ID: ${id}")
+        println("propertyInstance: ${propertyInstance}")
+
+        [propertyInstance: propertyInstance]
     }
 }

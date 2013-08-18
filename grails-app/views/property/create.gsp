@@ -11,7 +11,7 @@
 	</head>
 	<body>
 		<div id="create-property" class="row well" role="main">
-			<h1>Create new Bed Space</h1>
+			<h2>Create new Bed Space</h2>
 			<g:if test="${flash.message}">
 			<div class="message" role="status">${flash.message}</div>
 			</g:if>
@@ -26,8 +26,9 @@
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>
+                <br>
 				<fieldset class="buttons">
-					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					<g:submitButton name="create" class="save btn btn-primary" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 				</fieldset>
 			</g:form>
 		</div>

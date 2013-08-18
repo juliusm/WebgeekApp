@@ -1,71 +1,107 @@
-<g:if test="${propertyInstance?.address}">
-    <li class="fieldcontain">
-        <span id="address-label" class="property-label"><g:message code="property.address.label" default="Address" /></span>
+<div class="span6">
+    <img class="bigAvatar" src="${g.createLink(controller: 'property', action:'viewMainPicture', params: [id: propertyInstance.id])}" />
+</div>
 
-        <span class="property-value" aria-labelledby="address-label"><g:fieldValue bean="${propertyInstance}" field="address"/></span>
+<div>
+    <h3><user:currentUser/></h3>
+    <table class="bedSpaceDetails">
+        <tr>
+            <td>
+                <span class="tKey">
+                    Contact Number
+                </span>
+            </td>
+            <td>
+                <span class="property-value tValue">${currentUser?.contactNumber}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span class="tKey">
+                    Email
+                </span>
+            </td>
+            <td>
+                <span class="property-value tValue" aria-labelledby="address-label">${currentUser?.email}</span>
+            </td>
+        </tr>
+        %{--<tr>--}%
+            %{--<td>--}%
+                %{--<span class="tKey">--}%
+                    %{--City--}%
+                %{--</span>--}%
+            %{--</td>--}%
+            %{--<td>--}%
+                %{--<span class="property-value tValue" aria-labelledby="address-label">${propertyInstance?.city}</span>--}%
+            %{--</td>--}%
+        %{--</tr>--}%
+        %{--<tr>--}%
+            %{--<td colspan="2">--}%
+                %{--<span class="tKey">--}%
+                    %{--Description--}%
+                %{--</span>--}%
+            %{--</td>--}%
+        %{--</tr>--}%
+        %{--<tr>--}%
+            %{--<td colspan="2">--}%
+                %{--<span class="tValue">--}%
+                    %{--${propertyInstance?.description}--}%
+                %{--</span>--}%
+            %{--</td>--}%
+        %{--</tr>--}%
+    </table>
+</div>
 
-    </li>
-</g:if>
+<div>
+    <h4>Bedspace Details</h4>
+    <table class="bedSpaceDetails">
+        <tr>
+            <td>
+                <span class="tKey">
+                    Rental Fee
+                </span>
+            </td>
+            <td>
+                <span class="property-value tValue">${propertyInstance?.rentalFee}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span class="tKey">
+                    Address
+                </span>
+            </td>
+            <td>
+                <span class="property-value tValue" aria-labelledby="address-label">${propertyInstance?.address}</span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <span class="tKey">
+                    City
+                </span>
+            </td>
+            <td>
+                <span class="property-value tValue" aria-labelledby="address-label">${propertyInstance?.city}</span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <span class="tKey">
+                    Description
+                </span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <span class="tValue">
+                    ${propertyInstance?.description}
+                </span>
+            </td>
+        </tr>
+    </table>
+</div>
 
-<g:if test="${propertyInstance?.city}">
-    <li class="fieldcontain">
-        <span id="city-label" class="property-label"><g:message code="property.city.label" default="City" /></span>
 
-        <span class="property-value" aria-labelledby="city-label"><g:fieldValue bean="${propertyInstance}" field="city"/></span>
 
-    </li>
-</g:if>
 
-<g:if test="${propertyInstance?.datePosted}">
-    <li class="fieldcontain">
-        <span id="datePosted-label" class="property-label"><g:message code="property.datePosted.label" default="Date Posted" /></span>
-
-        <span class="property-value" aria-labelledby="datePosted-label"><g:formatDate date="${propertyInstance?.datePosted}" /></span>
-
-    </li>
-</g:if>
-
-<g:if test="${propertyInstance?.description}">
-    <li class="fieldcontain">
-        <span id="description-label" class="property-label"><g:message code="property.description.label" default="Description" /></span>
-
-        <span class="property-value" aria-labelledby="description-label"><g:fieldValue bean="${propertyInstance}" field="description"/></span>
-
-    </li>
-</g:if>
-
-<g:if test="${propertyInstance?.maxTenants}">
-    <li class="fieldcontain">
-        <span id="maxTenants-label" class="property-label"><g:message code="property.maxTenants.label" default="Max Tenants" /></span>
-
-        <span class="property-value" aria-labelledby="maxTenants-label"><g:fieldValue bean="${propertyInstance}" field="maxTenants"/></span>
-
-    </li>
-</g:if>
-
-<g:if test="${propertyInstance?.photo}">
-    <li class="fieldcontain">
-        <span id="photo-label" class="property-label"><g:message code="property.photo.label" default="Photo" /></span>
-
-    </li>
-</g:if>
-
-<g:if test="${propertyInstance?.rentalFee}">
-    <li class="fieldcontain">
-        <span id="rentalFee-label" class="property-label"><g:message code="property.rentalFee.label" default="Rental Fee" /></span>
-
-        <span class="property-value" aria-labelledby="rentalFee-label"><g:fieldValue bean="${propertyInstance}" field="rentalFee"/></span>
-
-    </li>
-</g:if>
-
-<g:if test="${propertyInstance?.reviews}">
-    <li class="fieldcontain">
-        <span id="reviews-label" class="property-label"><g:message code="property.reviews.label" default="Reviews" /></span>
-
-        <g:each in="${propertyInstance.reviews}" var="r">
-            <span class="property-value" aria-labelledby="reviews-label"><g:link controller="review" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></span>
-        </g:each>
-
-    </li>
-</g:if>
