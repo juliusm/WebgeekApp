@@ -2,7 +2,7 @@
     <div class="navbar-inner">
         <div class="container">
             <g:link uri="/" class="brand">
-                <img src="images/logo.png" alt="bedspacer.ph"/>
+                <p><g:message code="webapp.label"/></p>
             </g:link>
 
             <div class="nav-collapse">
