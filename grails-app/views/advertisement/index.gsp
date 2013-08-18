@@ -9,14 +9,14 @@
 </head>
     <body>
         <div class="row well">
-            <g:form class="well span5 pull-left" style="margin-left:100px"
-            	action="search" controller="advertisement" >
-            	<g:textField name="value" />
-            	<g:select name="search.type" from="${['City', 'Property']}" value="${type}"/>
 
-            	<g:submitButton name="search" value="Search" />
-            </g:form>
-        </div>
+		<g:form class="well span5 pull-left" style="margin-left:100px" 
+		controller="advertisement" action="list" method="post">
+			<label for="q"> Street, Barangay, City, and/or Province </label>
+			<g:textField name="q" />
+			<g:submitButton name="search" value="Search" />
+		</g:form>
+	</div>
         <div id="spinner" class="spinner" style="display:none;"></div>
         <div class="span7">
 
