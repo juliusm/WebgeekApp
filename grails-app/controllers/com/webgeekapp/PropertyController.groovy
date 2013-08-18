@@ -114,6 +114,7 @@ class PropertyController {
         }
     }
 
+
     def viewMainPicture = {
         def property = Property.get(params.id)
         def avatarFile
