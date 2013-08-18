@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta name="layout" content="main">
     <r:require modules="application"/>
@@ -35,12 +35,17 @@
                             </div>
                         </td>
                         <td>
-                            <div class="span4">
+                            <div class="span2">
+                                <p><b>${propertyInstance.city}</b></p>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="span3">
                                 <h5>P${propertyInstance.rentalFee} / Month</h5>
                             </div>
                         </td>
                         <td>
-                            <div class="span4">
+                            <div class="span3">
                                 Posted <prettytime:display date="${propertyInstance.datePosted}"/>
                             </div>
                         </td>
