@@ -8,7 +8,7 @@
             </a>
 
             <g:link uri="/" class="brand">
-                Instalodge
+                <h3><g:message code="webapp.label"/></h3>
             </g:link>
 
             <div class="nav-collapse">

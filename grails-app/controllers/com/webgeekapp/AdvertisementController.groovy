@@ -3,8 +3,12 @@ package com.webgeekapp
 class AdvertisementController {
 
     def index() {
-        redirect(action: 'list')
+        
     }
+	
+	def search () {
+		
+	}
 
     def list() {
 
@@ -19,7 +23,6 @@ class AdvertisementController {
     }
 
     def show() {
-
 
     }
 }

@@ -8,9 +8,14 @@
     <title><g:message code="webapp.label"/></title>
 </head>
     <body>
-        <div class="bgbackground">
-            %{--<g:form class="well span5 pull-left" action="save" controller="post" style="margin-left:100px">--}%
-            %{--</g:form>--}%
+        <div class="row well">
+            <g:form class="well span5 pull-left" style="margin-left:100px"
+            	action="search" controller="advertisement" >
+            	<g:textField name="value" />
+            	<g:select name="search.type" from="${['City', 'Property']}" value="${type}"/>
+
+            	<g:submitButton name="search" value="Search" />
+            </g:form>
         </div>
         <div id="spinner" class="spinner" style="display:none;"></div>
         <div class="span7">
