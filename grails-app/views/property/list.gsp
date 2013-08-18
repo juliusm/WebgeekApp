@@ -7,16 +7,15 @@
         <r:require modules="application"/>
         <r:require modules="bootstrap"/>
         <r:require modules="bootstrap-responsive-css"/>
-		<title><g:message code="default.list.label" args="[entityName]" /></title>
 	</head>
 	<body>
-		<div class="row span8 spaceTop1" role="main">
+		<div class="span8 spaceTop1" role="main">
 			<g:if test="${propertyInstanceList}">
                 <h4>My Bedspaces</h4>
                 <g:if test="${flash.message}">
                     <div class="message" role="status">${flash.message}</div>
                 </g:if>
-                <table id="propertyTable" class="span8">
+                <table id="propertyTable" class="span7">
                     <thead>
                     <tr>
                         %{--<g:sortableColumn property="title" title="Photo" />--}%
@@ -59,26 +58,31 @@
 		</div>
         <div id="side" class="span3 pull-right spaceTop1">
             <h4>My Tenants</h4>
-            <table>
-                <thead>
-                <tr class="tKey">
-                    <td>Name</td>
-                    <td>Bedspace Rented</td>
-                </tr>
-            </thead>
-            <g:each in="${propertyInstanceList}" var="propertyInstance">
-                <g:each in="${propertyInstance?.tenants}" var="tenantInstance">
-                    <tr>
-                        <td>
-                            ${tenantInstance.firstName} ${tenantInstance.lastName}
-                        </td>
-                        <td>
-                            <g:link action="show" id="${propertyInstance.id}">${fieldValue(bean: propertyInstance, field: "title")}</g:link>
-                        </td>
+            <g:if test="${propertyInstanceList?.tenants}">
+                <table>
+                    <thead>
+                    <tr class="tKey">
+                        <td>Name</td>
+                        <td>Bedspace Rented</td>
                     </tr>
-                 </g:each>
-            </g:each>
-            </table>
+                    </thead>
+                    <g:each in="${propertyInstanceList}" var="propertyInstance">
+                        <g:each in="${propertyInstance?.tenants}" var="tenantInstance">
+                            <tr>
+                                <td>
+                                    ${tenantInstance.firstName} ${tenantInstance.lastName}
+                                </td>
+                                <td>
+                                    <g:link action="show" id="${propertyInstance.id}">${fieldValue(bean: propertyInstance, field: "title")}</g:link>
+                                </td>
+                            </tr>
+                        </g:each>
+                    </g:each>
+                </table>
+            </g:if>
+            <g:else>
+                You dont have any tenants yet.
+            </g:else>
         </div>
 	</body>
 </html>
