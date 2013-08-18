@@ -15,7 +15,12 @@ class AdvertisementController {
         [propertyList: properties, total:total]
     }
 
-    def show() {
+    def show(Long id) {
 
+        def propertyInstance = Property.get(id)
+        println("ID: ${id}")
+        println("propertyInstance: ${propertyInstance}")
+
+        [propertyInstance: propertyInstance]
     }
 }

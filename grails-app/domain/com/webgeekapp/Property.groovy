@@ -29,7 +29,9 @@ class Property {
     }
 
     Date getNearestEndDate(){
-        return tenants?.sort{it?.endDate}?.get(0)?.endDate;
+        def tenants = tenants?.sort{it?.endDate}
+
+        return tenants && tenants.size()>0? tenants.get(0)?.endDate: null
     }
 
     def isTenantsFull() {

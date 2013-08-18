@@ -262,3 +262,7 @@ h1,h2,h3,h4,h5 {text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);}
 .spanheight1 {
     height: 400px;
 }
+
+.clickable-row:hover{
+    cursor: pointer;
+}
