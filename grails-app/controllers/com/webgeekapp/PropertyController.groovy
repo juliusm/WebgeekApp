@@ -1,7 +1,9 @@
 package com.webgeekapp
 
 import org.springframework.dao.DataIntegrityViolationException
+import grails.plugins.springsecurity.Secured
 
+@Secured(['ROLE_CARETAKER'])
 class PropertyController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
